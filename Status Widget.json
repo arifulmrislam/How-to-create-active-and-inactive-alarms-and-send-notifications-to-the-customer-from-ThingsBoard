@@ -1,0 +1,176 @@
+{
+  "widget": {
+    "isSystemType": true,
+    "bundleAlias": "charts",
+    "typeAlias": "state_chart",
+    "type": "timeseries",
+    "title": "New widget",
+    "image": null,
+    "description": null,
+    "sizeX": 8,
+    "sizeY": 5,
+    "config": {
+      "datasources": [
+        {
+          "type": "entity",
+          "name": null,
+          "entityAliasId": "f82c9d31-b42b-ee28-c2f1-58ce28946acd",
+          "filterId": null,
+          "dataKeys": [
+            {
+              "name": "count",
+              "type": "timeseries",
+              "label": "Status",
+              "color": "#f30202",
+              "settings": {
+                "excludeFromStacking": false,
+                "hideDataByDefault": false,
+                "disableDataHiding": false,
+                "removeFromLegend": false,
+                "showLines": true,
+                "fillLines": false,
+                "showPoints": false,
+                "showPointShape": "circle",
+                "pointShapeFormatter": "var size = radius * Math.sqrt(Math.PI) / 2;\nctx.moveTo(x - size, y - size);\nctx.lineTo(x + size, y + size);\nctx.moveTo(x - size, y + size);\nctx.lineTo(x + size, y - size);",
+                "showPointsLineWidth": 0,
+                "showPointsRadius": 0,
+                "showSeparateAxis": false,
+                "axisPosition": "left",
+                "thresholds": [
+                  {
+                    "thresholdValueSource": "predefinedValue"
+                  }
+                ],
+                "comparisonSettings": {
+                  "showValuesForComparison": true
+                }
+              },
+              "_hash": 0.4987590104776003,
+              "units": null,
+              "decimals": null,
+              "funcBody": null,
+              "usePostProcessing": null,
+              "postFuncBody": null
+            }
+          ]
+        }
+      ],
+      "timewindow": {
+        "hideInterval": false,
+        "hideAggregation": false,
+        "hideAggInterval": false,
+        "hideTimezone": false,
+        "selectedTab": 0,
+        "realtime": {
+          "realtimeType": 0,
+          "timewindowMs": 900000,
+          "quickInterval": "CURRENT_DAY",
+          "interval": 30000
+        },
+        "aggregation": {
+          "type": "AVG",
+          "limit": 25000
+        }
+      },
+      "showTitle": true,
+      "backgroundColor": "#fff",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "padding": "8px",
+      "settings": {
+        "shadowSize": 4,
+        "fontColor": "#545454",
+        "fontSize": 10,
+        "xaxis": {
+          "showLabels": true,
+          "color": "#545454"
+        },
+        "yaxis": {
+          "showLabels": true,
+          "color": "#545454",
+          "ticksFormatter": "if (value > 0 && value <= 1) {\n    return 'On';\n} else if (value === 0) {\n    return 'Off';\n} else {\n    return '';\n}",
+          "tickSize": 1,
+          "max": 1
+        },
+        "grid": {
+          "color": "#545454",
+          "tickColor": "#DDDDDD",
+          "verticalLines": true,
+          "horizontalLines": true,
+          "outlineWidth": 1
+        },
+        "stack": false,
+        "tooltipIndividual": false,
+        "tooltipValueFormatter": "if (value > 0 && value <= 1) {\n    return 'On';\n} else if (value === 0) {\n    return 'Off';\n} else {\n    return '';\n}",
+        "smoothLines": false,
+        "timeForComparison": "previousInterval",
+        "xaxisSecond": {
+          "axisPosition": "top",
+          "showLabels": true
+        }
+      },
+      "title": "Monitorizare caderi tensiune",
+      "dropShadow": true,
+      "enableFullscreen": true,
+      "titleStyle": {
+        "fontSize": "20px",
+        "fontWeight": "bold",
+        "opacity": "0.87"
+      },
+      "widgetStyle": {},
+      "useDashboardTimewindow": false,
+      "showLegend": true,
+      "actions": {},
+      "legendConfig": {
+        "direction": "column",
+        ",position": "bottom",
+        "showMin": false,
+        "showMax": false,
+        "showAvg": false,
+        "showTotal": false
+      },
+      "displayTimewindow": true,
+      "showTitleIcon": false,
+      "iconColor": "rgba(0, 0, 0, 0.87)",
+      "iconSize": "24px",
+      "titleTooltip": "",
+      "enableDataExport": true
+    },
+    "row": 0,
+    "col": 0,
+    "id": "6cc42187-44d5-cdfe-8c1a-97077a2180a0"
+  },
+  "aliasesInfo": {
+    "datasourceAliases": {
+      "0": {
+        "alias": "Modbus Adeunis",
+        "filter": {
+          "type": "deviceSearchQuery",
+          "resolveMultiple": true,
+          "rootStateEntity": false,
+          "stateEntityParamName": null,
+          "defaultStateEntity": null,
+          "rootEntity": {
+            "entityType": "DEVICE",
+            "id": "653aa030-5105-11ec-88a9-c9f695021dea"
+          },
+          "direction": "FROM",
+          "maxLevel": 1,
+          "fetchLastLevelOnly": false,
+          "relationType": "Contains",
+          "deviceTypes": [
+            "default"
+          ]
+        }
+      }
+    },
+    "targetDeviceAliases": {}
+  },
+  "filtersInfo": {
+    "datasourceFilters": {}
+  },
+  "originalSize": {
+    "sizeX": 24,
+    "sizeY": 5
+  },
+  "originalColumns": 24
+}

@@ -1,0 +1,271 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": ""
+    },
+    "name": "Alarm-IoT-2040",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": 3,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 504,
+          "layoutY": 353
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Create Inactivity Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmDetailsBuildJs": "var detail = {};\nif (metadata.prevAlarmDetails) {\n    detail = JSON.parse(metadata.prevAlarmDetails);\n}else {\n    detail.message = \"Phase-1 inactive\";\n}\nreturn detail;",
+          "useMessageAlarmData": false,
+          "alarmType": "General Alarm",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 273,
+          "layoutY": 97
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Temperature Alarm",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return msg.count === 1;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 254,
+          "layoutY": 290
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Temperature Alarm",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return msg.count === 0;"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 35,
+          "layoutY": 211
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+        "name": "by type",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "function nextRelation(metadata, msg){\r\n        \tif (msg.count === 1){\r\n        \t\treturn ['route-1'];\r\n        \t}else if (msg.count === 0){\r\n        \t\treturn ['route-2'];\r\n        \t}\r\n        }\r\n        \r\n        return nextRelation(metadata, msg);\r\n        \r\n "
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 483,
+          "layoutY": 166
+        },
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Create activity Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}else {\n    details.message = \"Phase-1 is inactive\";\n}\nreturn details;",
+          "alarmType": "General Alarm"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 772,
+          "layoutY": 55
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "Email to Customer",
+        "debugMode": false,
+        "configuration": {
+          "fromTemplate": "contact@polisea.ro",
+          "toTemplate": "ariful.islam@polisea.ro",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "$[details.message]",
+          "bodyTemplate": "$[details.message]"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 763,
+          "layoutY": 151
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "Email",
+        "debugMode": false,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 484,
+          "layoutY": 36
+        },
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Create activity Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmDetailsBuildJs": "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}else {\n    details.message = \"Phase-1 is active.\";\n}\nreturn details;",
+          "useMessageAlarmData": false,
+          "alarmType": "General Alarm",
+          "severity": "WARNING",
+          "propagate": false,
+          "relationTypes": []
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 501,
+          "layoutY": 250
+        },
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Create activity Alarm",
+        "debugMode": false,
+        "configuration": {
+          "alarmDetailsBuildJs": "var detail = {};\nif (metadata.prevAlarmDetails) {\n    detail = JSON.parse(metadata.prevAlarmDetails);\n}else {\n    detail.message = \"Phase-1 active\";\n}\nreturn detail;",
+          "alarmType": "General Alarm"
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 748,
+          "layoutY": 239
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "Email to Customer",
+        "debugMode": false,
+        "configuration": {
+          "fromTemplate": "contact@polisea.ro",
+          "toTemplate": "ariful.islam@polisea.ro",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "Inactive",
+          "bodyTemplate": "Phase-1 is inactive."
+        }
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 754,
+          "layoutY": 324
+        },
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "Email",
+        "debugMode": false,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 9,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 7,
+        "type": "True"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 4,
+        "type": "True"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 0,
+        "type": "True"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 8,
+        "type": "True"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 1,
+        "type": "route-1"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 2,
+        "type": "route-2"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 5,
+        "type": "Cleared"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 6,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 7,
+        "toIndex": 5,
+        "type": "Created"
+      },
+      {
+        "fromIndex": 8,
+        "toIndex": 9,
+        "type": "Cleared"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 10,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
