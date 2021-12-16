@@ -18,6 +18,9 @@ How to create rule chains on thingsboard and send notification to customer?
 
 At first, we have to open a rule chain folder on rule chains. Then we will redirect sensors values from root rule chains to new created rule chian folder.
 
+<img src= "Root rule chains.png" width=800> 
+
+<img src= "Rule chains.png" width=800> 
   
 How to visualize alarms on the dashboard?
 
