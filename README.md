@@ -13,6 +13,11 @@ Alarm type helps to identify the root cause of the alarm. For example, “Device
 
 Severity
 Each alarm has severity which is either Critical, Major, Minor, Warning, or Indeterminate (sorted by priority in descending order).
+
+How to create rule chains on thingsboard and send notification to customer?
+
+At first, we have to open a rule chain folder on rule chains. Then we will redirect sensors values from root rule chains to new created rule chian folder.
+
   
 How to visualize alarms on the dashboard?
 
