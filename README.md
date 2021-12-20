@@ -32,8 +32,11 @@ We can also explore datasource settings and advanced settings of the widget.
 # The Datasource setting allows us to:
 
 Specify the status filter using any combination of ack/unack/active/clear;
+
 Specify severity filter using any combination of severity levels;
+
 Specify a list of alarm types;
+
 Enable or disable search of the propagated alarms (disabled by default).
 
 <img src= "From dashboard.png" width=800> 
