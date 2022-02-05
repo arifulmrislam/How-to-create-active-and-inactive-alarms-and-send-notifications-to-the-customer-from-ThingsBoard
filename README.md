@@ -20,7 +20,10 @@ Each alarm has severity which is either Critical, Major, Minor, Warning, or Inde
 First, we need to open a rule chain folder on rule chains. After that, we will redirect the sensor values from root rule chains to new created rule chain folder.
 For better understanding, Root rule chain is created by thingsboard developer. We just use this chains to use data to other folders.
 
+`Root rule chains`
 <img src= "Root rule chains.png" width=800> 
+
+`We receive data from root rule chains using input node.`
 
 <img src= "Rule chains.png" width=800> 
   
