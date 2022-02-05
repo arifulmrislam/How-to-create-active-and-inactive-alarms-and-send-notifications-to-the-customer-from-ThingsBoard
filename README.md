@@ -15,9 +15,10 @@ Alarm type helps to identify the root cause of the alarm. For example, “Device
 
 Each alarm has severity which is either Critical, Major, Minor, Warning, or Indeterminate (sorted by priority in descending order).
 
-How to create rule chains on thingsboard and send notification to customer?
+- How to create rule chains on thingsboard and send notification to customer?
 
-At first, we have to open a rule chain folder on rule chains. Then we will redirect sensors values from root rule chains to new created rule chian folder.
+First, we need to open a rule chain folder on rule chains. After that, we will redirect the sensor values from root rule chains to new created rule chain folder.
+For better understanding, Root rule chain is created by thingsboard developer. We just use this chains to use data to other folders.
 
 <img src= "Root rule chains.png" width=800> 
 
